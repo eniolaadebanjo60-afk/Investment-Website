@@ -1,0 +1,119 @@
+
+.about-hero {
+  background-color: var(--color-primary-light);
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.about-hero h1 span {
+  color: var(--color-primary);
+}
+
+.about-hero p {
+  font-size: 18px;
+  color: var(--color-gray);
+  margin-top: 16px;
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+.about-mission {
+  padding: 80px 5%;
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+
+.mission-text {
+  flex: 1;
+}
+
+.mission-text h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.mission-text p {
+  color: var(--color-gray);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.mission-stats {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.m-stat {
+  background-color: var(--color-primary-light);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.m-stat h3 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.m-stat p {
+  font-size: 14px;
+  color: var(--color-gray);
+  margin-top: 6px;
+}
+
+.about-team {
+  padding: 80px 5%;
+  background-color: var(--color-primary-light);
+  text-align: center;
+}
+
+.about-team h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.team-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 40px 24px;
+  transition: box-shadow 0.3s;
+}
+
+.team-card:hover {
+  box-shadow: 0 8px 24px rgba(10, 102, 64, 0.1);
+}
+
+.team-avatar {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+
+.team-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.team-card p {
+  color: var(--color-gray);
+  font-size: 14px;
+}

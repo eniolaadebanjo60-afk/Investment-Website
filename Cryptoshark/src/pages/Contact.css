@@ -1,0 +1,122 @@
+.contact-hero {
+  background-color: var(--color-primary-light);
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.contact-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.contact-hero h1 span {
+  color: var(--color-primary);
+}
+
+.contact-hero p {
+  font-size: 18px;
+  color: var(--color-gray);
+  margin-top: 12px;
+}
+
+.contact-body {
+  padding: 80px 5%;
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.info-card {
+  background-color: var(--color-primary-light);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.info-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.info-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.info-card p {
+  color: var(--color-gray);
+  font-size: 14px;
+}
+
+.contact-form {
+  flex: 2;
+}
+
+.form h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-primary-light);
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 16px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.form button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.form button:hover {
+  background-color: #084d30;
+}
+
+.success-message {
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.success-message h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--color-primary);
+}
+
+.success-message p {
+  color: var(--color-gray);
+  font-size: 15px;
+}

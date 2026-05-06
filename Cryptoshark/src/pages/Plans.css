@@ -1,0 +1,119 @@
+.plans {
+  padding: 80px 5%;
+}
+
+.plans-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.plans-header h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.plans-header p {
+  font-size: 16px;
+  color: var(--color-gray);
+  margin-top: 12px;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.plan-card {
+  border: 1px solid var(--color-primary-light);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  transition: box-shadow 0.3s;
+  background-color: var(--color-white);
+}
+
+.plan-card:hover {
+  box-shadow: 0 8px 24px rgba(10, 102, 64, 0.1);
+}
+
+.plan-card.popular {
+  border: 2px solid var(--color-primary);
+  transform: scale(1.03);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.plan-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.plan-card h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.plan-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.plan-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-primary-light);
+}
+
+.plan-detail span {
+  color: var(--color-gray);
+}
+
+.plan-detail strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.plan-btn {
+  display: block;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.plan-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.plan-btn-popular {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.plan-btn-popular:hover {
+  background-color: #084d30;
+}

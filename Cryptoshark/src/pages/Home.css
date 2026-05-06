@@ -1,0 +1,237 @@
+
+.hero {
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('Crypto-Home.jpg');
+  background-position: center;
+  background-size: cover;
+  padding: 80px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  min-height: 80vh;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.2;
+  max-width: 600px;
+  color: #fff;
+}
+
+.hero-text h1 span {
+  color: #000;
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: #fff;
+  margin-top: 16px;
+  max-width: 520px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-outline {
+  border: 2px solid var(--color-primary);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.stat h3 {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.stat p {
+  font-size: 14px;
+  color: #000;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.features {
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.section-sub {
+  color: var(--color-gray);
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.feature-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary-light);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: left;
+  transition: box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  box-shadow: 0 8px 24px rgba(10, 102, 64, 0.1);
+}
+
+.feature-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.feature-card p {
+  color: #000;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* How It Works */
+.how-it-works {
+  padding: 80px 5%;
+  background-color: var(--color-primary-light);
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.step {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 32px 24px;
+  width: 240px;
+  text-align: center;
+}
+
+.step-number {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 auto 16px;
+}
+
+.step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: var(--color-gray);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.step-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-primary);
+  opacity: 0.3;
+}
+
+/* CTA Banner */
+.cta-banner {
+  padding: 80px 5%;
+  background-color: var(--color-primary);
+  text-align: center;
+  color: var(--color-white);
+}
+
+.cta-banner h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.cta-banner p {
+  font-size: 16px;
+  margin-top: 12px;
+  opacity: 0.85;
+}
+
+.cta-banner .btn-primary {
+  margin-top: 28px;
+  display: inline-block;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.cta-banner .btn-primary:hover {
+  background-color: var(--color-primary-light);
+}
