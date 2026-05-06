@@ -7,6 +7,7 @@ import Plan from './pages/Plans'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Contact from './pages/Contact'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
