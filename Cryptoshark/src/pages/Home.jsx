@@ -30,10 +30,6 @@ const Home = () => {
             <h3>98%</h3>
             <p>Satisfaction Rate</p>
           </div>
-          <div className="stat">
-            <h3>4.9★</h3>
-            <p>User Rating</p>
-          </div>
         </div>
       </section>
 

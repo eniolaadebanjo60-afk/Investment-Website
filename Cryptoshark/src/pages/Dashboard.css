@@ -1,0 +1,331 @@
+.dashboard {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* Top Bar */
+.dash-topbar {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-primary-light);
+  padding: 16px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.dash-logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.dash-logo span {
+  color: var(--color-primary);
+}
+
+.dash-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dash-user span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.dash-user button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dash-user button:hover {
+  background-color: #084d30;
+}
+
+/* Body */
+.dash-body {
+  padding: 100px 5% 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* Balance */
+.dash-balance {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.balance-card {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 16px;
+  padding: 32px 24px;
+}
+
+.balance-card.secondary {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border: 1px solid var(--color-primary-light);
+}
+
+.balance-card p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.balance-card h1 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.balance-card span {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 6px;
+  display: block;
+}
+
+.balance-card.secondary p {
+  color: var(--color-gray);
+}
+
+.balance-card.secondary h1 {
+  color: var(--color-primary);
+}
+
+.dash-section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.dash-plans {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.dash-plan-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary-light);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dash-plan-card h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.dash-plan-card p {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.dash-plan-card p strong {
+  color: var(--color-text);
+}
+
+.dash-plan-card button {
+  margin-top: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dash-plan-card button:hover {
+  background-color: #084d30;
+}
+
+/* Transactions */
+.no-tx {
+  color: var(--color-gray);
+  font-size: 15px;
+}
+
+.tx-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tx-table th {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.tx-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--color-primary-light);
+  color: var(--color-text);
+}
+
+.tx-returns {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.fund-btn {
+  margin-top: 16px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid var(--color-white);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.fund-btn:hover {
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.modal p {
+  color: var(--color-gray);
+  font-size: 14px;
+}
+
+.modal input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-primary-light);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.modal input:focus {
+  border-color: var(--color-primary);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-cancel {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-cancel:hover {
+  background-color: var(--color-primary-light);
+}
+
+.modal-confirm {
+  flex: 1;
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-confirm:hover {
+  background-color: #084d30;
+}
+.withdraw-btn {
+  margin-top: 16px;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.withdraw-btn:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.balance-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.status-pending {
+  color: #d97706;
+  font-weight: 700;
+}

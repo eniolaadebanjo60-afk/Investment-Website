@@ -4,6 +4,11 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faLocation } from '@fortawesome/free-solid-svg-icons'
+import { BiLogoWhatsapp } from 'react-icons/bi'
+import { BiLogoFacebook } from 'react-icons/bi'
+import { BiLogoInstagram } from 'react-icons/bi'
+import { BiLogoTwitter } from 'react-icons/bi'
+import { BiLogoTelegram } from 'react-icons/bi'
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -91,8 +96,17 @@ const Contact = () => {
             </div>
           )}
         </div>
-
       </section>
+      <div className='extra-contact'>
+        <h1>You Can Also Reach Out to us via:</h1>
+        <div className='social-icon'>
+          <a href=''><BiLogoWhatsapp/></a>
+          <a href=''><BiLogoInstagram/></a>
+          <a href=''><BiLogoTwitter/></a>
+          <a href=''><BiLogoFacebook/></a>
+          <a href=''><BiLogoTelegram/></a>
+        </div>  
+      </div>
     </div>
   )
 }

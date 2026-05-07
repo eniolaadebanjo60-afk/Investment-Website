@@ -1,6 +1,6 @@
 
 .hero {
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('Crypto-Home.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('Crypto-Home.jpg');
   background-position: center;
   background-size: cover;
   padding: 80px 5%;
@@ -9,9 +9,11 @@
   gap: 48px;
   min-height: 80vh;
 }
-
+.hero-text{
+    margin-top: 70px;
+}
 .hero-text h1 {
-  font-size: 52px;
+  font-size: 45px;
   font-weight: 800;
   line-height: 1.2;
   max-width: 600px;
@@ -23,7 +25,7 @@
 }
 
 .hero-text p {
-  font-size: 18px;
+  font-size: 15px;
   color: #fff;
   margin-top: 16px;
   max-width: 520px;
@@ -40,10 +42,10 @@
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
-  padding: 14px 28px;
+  padding: 14px 24px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
   transition: background-color 0.3s;
 }
@@ -56,10 +58,10 @@
 .btn-outline {
   border: 1px solid #000;
   color: #fff;
-  padding: 14px 28px;
+  padding: 14px 24px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
   transition: all 0.3s;
 }
@@ -73,7 +75,7 @@
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
-  margin-top: 30px;
+  align-items: baseline;
 }
 
 .stat h3 {

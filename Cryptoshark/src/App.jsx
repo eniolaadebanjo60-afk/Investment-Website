@@ -8,11 +8,13 @@ import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
+import Admin from './pages/Admin'
+
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/plans" element={<Plan />} />
@@ -21,8 +23,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
-      <Footer />
+      <Footer/>
     </BrowserRouter>
   )
 }
