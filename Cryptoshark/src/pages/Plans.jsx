@@ -1,4 +1,5 @@
 import './Plans.css'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const plans = [
   {
@@ -37,16 +38,22 @@ const plans = [
 ]
 
 const Plans = () => {
+  const [headerRef, headerVisible] = useScrollAnimation()
+  const [gridRef, gridVisible] = useScrollAnimation()
+
   return (
     <div className="plans">
-      <div className="plans-header">
+      <div ref={headerRef} className={`plans-header fade-up ${headerVisible ? 'visible' : ''}`}>
         <h1>Investment Plans</h1>
         <p>Choose a plan that fits your goals. All plans are managed by our crypto experts.</p>
       </div>
 
-      <div className="plans-grid">
-        {plans.map((plan) => (
-          <div className={`plan-card ${plan.popular ? 'popular' : ''}`} key={plan.name}>
+      <div ref={gridRef} className="plans-grid">
+        {plans.map((plan, i) => (
+          <div
+            key={plan.name}
+            className={`plan-card fade-up delay-${i + 1} ${plan.popular ? 'popular' : ''} ${gridVisible ? 'visible' : ''}`}
+          >
             {plan.popular && <div className="popular-badge">Most Popular</div>}
             <h2>{plan.name}</h2>
             <div className="plan-details">

@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import './Contact.css'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
-import { faLocation } from '@fortawesome/free-solid-svg-icons'
-import { BiLogoWhatsapp } from 'react-icons/bi'
-import { BiLogoFacebook } from 'react-icons/bi'
-import { BiLogoInstagram } from 'react-icons/bi'
-import { BiLogoTwitter } from 'react-icons/bi'
-import { BiLogoTelegram } from 'react-icons/bi'
+import { BiLogoWhatsapp, BiLogoFacebook, BiLogoInstagram, BiLogoTwitter, BiLogoTelegram } from 'react-icons/bi'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+
+  const [heroRef, heroVisible] = useScrollAnimation()
+  const [infoRef, infoVisible] = useScrollAnimation()
+  const [formRef, formVisible] = useScrollAnimation()
+  const [socialRef, socialVisible] = useScrollAnimation()
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -31,31 +31,33 @@ const Contact = () => {
     <div className="contact">
 
       <section className="contact-hero">
-        <h1>Get In <span>Touch</span></h1>
-        <p>Have questions? Our team is ready to help you 24/7.</p>
+        <div ref={heroRef} className={`fade-up ${heroVisible ? 'visible' : ''}`}>
+          <h1>Get In <span>Touch</span></h1>
+          <p>Have questions? Our team is ready to help you 24/7.</p>
+        </div>
       </section>
 
       <section className="contact-body">
 
-        <div className="contact-info">
+        <div ref={infoRef} className={`contact-info fade-left ${infoVisible ? 'visible' : ''}`}>
           <div className="info-card">
-            <div className="info-icon"><FontAwesomeIcon icon={faEnvelope}/></div>
+            <div className="info-icon"><FontAwesomeIcon icon={faEnvelope} /></div>
             <h3>Email Us</h3>
             <p>support@vaultx.com</p>
           </div>
           <div className="info-card">
-            <div className="info-icon"><FontAwesomeIcon icon={faPhone}/></div>
+            <div className="info-icon"><FontAwesomeIcon icon={faPhone} /></div>
             <h3>Call Us</h3>
             <p>+1 (800) 123-4567</p>
           </div>
           <div className="info-card">
-            <div className="info-icon"><FontAwesomeIcon icon={faLocation}/></div>
+            <div className="info-icon"><FontAwesomeIcon icon={faLocationDot} /></div>
             <h3>Office</h3>
             <p>123 Crypto Lane, New York, USA</p>
           </div>
         </div>
 
-        <div className="contact-form">
+        <div ref={formRef} className={`contact-form fade-right ${formVisible ? 'visible' : ''}`}>
           {submitted ? (
             <div className="success-message">
               <h3>Message Sent!</h3>
@@ -96,17 +98,20 @@ const Contact = () => {
             </div>
           )}
         </div>
+
       </section>
-      <div className='extra-contact'>
+
+      <div ref={socialRef} className={`extra-contact fade-up ${socialVisible ? 'visible' : ''}`}>
         <h1>You Can Also Reach Out to us via:</h1>
         <div className='social-icon'>
-          <a href=''><BiLogoWhatsapp/></a>
-          <a href=''><BiLogoInstagram/></a>
-          <a href=''><BiLogoTwitter/></a>
-          <a href=''><BiLogoFacebook/></a>
-          <a href=''><BiLogoTelegram/></a>
-        </div>  
+          <a href=''><BiLogoWhatsapp /></a>
+          <a href=''><BiLogoInstagram /></a>
+          <a href=''><BiLogoTwitter /></a>
+          <a href=''><BiLogoFacebook /></a>
+          <a href=''><BiLogoTelegram /></a>
+        </div>
       </div>
+
     </div>
   )
 }

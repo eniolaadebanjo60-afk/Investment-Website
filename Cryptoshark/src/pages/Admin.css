@@ -264,3 +264,87 @@
 .reject-btn:hover {
   background-color: #b91c1c;
 }
+
+@media (max-width: 768px) {
+  .admin-login-card {
+    padding: 32px 24px;
+  }
+
+  .admin-topbar {
+    padding: 14px 4%;
+    box-sizing: border-box;
+  }
+
+  .admin-tabs {
+    padding: 0 4%;
+    top: 60px;
+    overflow-x: auto;
+  }
+
+  .admin-tabs button {
+    padding: 12px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .admin-body {
+    padding: 130px 4% 60px;
+  }
+
+  .admin-overview {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .admin-stat-card {
+    padding: 24px 16px;
+  }
+
+  .admin-stat-card h2 {
+    font-size: 26px;
+  }
+
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 12px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .admin-section-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-login-card {
+    padding: 28px 20px;
+  }
+
+  .admin-logo {
+    font-size: 20px;
+  }
+
+  .admin-login-card h2 {
+    font-size: 18px;
+  }
+
+  .admin-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-stat-card h2 {
+    font-size: 28px;
+  }
+
+  .approve-btn,
+  .reject-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

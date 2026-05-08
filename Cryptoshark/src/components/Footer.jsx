@@ -3,7 +3,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="footer">
-      © {new Date().getFullYear()} CryptoShark.
+      © {new Date().getFullYear()} VaultX.
     </div>
   )
 }

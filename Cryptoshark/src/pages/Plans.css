@@ -25,7 +25,7 @@
 }
 
 .plan-card {
-  border: 1px solid var(--color-primary-light);
+  border: 1px solid #000;
   border-radius: 16px;
   padding: 32px 24px;
   text-align: center;
@@ -94,7 +94,7 @@
 
 .plan-btn {
   display: block;
-  border: 2px solid var(--color-primary);
+  border: 2px solid #000;
   color: var(--color-primary);
   padding: 12px 0;
   border-radius: 8px;
@@ -116,4 +116,54 @@
 
 .plan-btn-popular:hover {
   background-color: #084d30;
+}
+
+@media (max-width: 768px) {
+  .plans {
+    padding: 60px 5%;
+  }
+
+  .plans-header h1 {
+    font-size: 30px;
+  }
+
+  .plans-header p {
+    font-size: 15px;
+  }
+
+  .plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .plan-card.popular {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .plans {
+    padding: 50px 4%;
+  }
+
+  .plans-header {
+    margin-bottom: 36px;
+  }
+
+  .plans-header h1 {
+    font-size: 26px;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .plan-card {
+    padding: 24px 20px;
+  }
+
+  .plan-card h2 {
+    font-size: 20px;
+  }
 }

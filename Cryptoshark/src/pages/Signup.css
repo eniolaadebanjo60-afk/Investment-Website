@@ -97,3 +97,27 @@
 .signup-footer a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 32px 24px;
+  }
+
+  .signup-logo {
+    font-size: 24px;
+  }
+
+  .signup-card h2 {
+    font-size: 20px;
+  }
+
+  .signup-card input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .signup-card button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}

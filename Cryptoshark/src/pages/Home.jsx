@@ -1,54 +1,66 @@
 import './Home.css'
-import { BiLock } from 'react-icons/bi'
-import { BiTrendingUp } from 'react-icons/bi'
+import { BiLock, BiTrendingUp } from 'react-icons/bi'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock, faChartLine, faBolt } from '@fortawesome/free-solid-svg-icons'
+import { faBolt } from '@fortawesome/free-solid-svg-icons'
+import useScrollAnimation from '../hooks/useScrollAnimation'
+import useCountUp from '../hooks/useCountUp'
 
 const Home = () => {
+  const [heroRef, heroVisible] = useScrollAnimation()
+  const [featuresRef, featuresVisible] = useScrollAnimation()
+  const [stepsRef, stepsVisible] = useScrollAnimation()
+  const [ctaRef, ctaVisible] = useScrollAnimation()
+  const [statsRef, statsVisible] = useScrollAnimation()
+
+  const assets = useCountUp(120, statsVisible)
+  const investors = useCountUp(15000, statsVisible)
+  const satisfaction = useCountUp(98, statsVisible)
+  const rating = useCountUp(4.9, statsVisible)
+
   return (
     <div className="home">
 
       <section className="hero">
-        <div className="hero-text">
+        <div ref={heroRef} className={`hero-text fade-up ${heroVisible ? 'visible' : ''}`}>
           <h1>Grow Your Wealth With <span>Crypto</span></h1>
-          <p>CryptoShark gives you access to smart crypto investment plans designed to grow your money securely and consistently.</p>
+          <p>VaultX gives you access to smart crypto investment plans designed to grow your money securely and consistently.</p>
           <div className="hero-buttons">
             <a href="/signup" className="btn-primary">Get Started</a>
             <a href="/plans" className="btn-outline">View Plans</a>
           </div>
         </div>
-        <div className="hero-stats">
+        <div ref={statsRef} className={`hero-stats fade-up ${statsVisible ? 'visible' : ''}`}>
           <div className="stat">
-            <h3>$120M+</h3>
+            <h3>${assets}M+</h3>
             <p>Assets Managed</p>
           </div>
           <div className="stat">
-            <h3>15,000+</h3>
+            <h3>{investors.toLocaleString()}+</h3>
             <p>Active Investors</p>
           </div>
           <div className="stat">
-            <h3>98%</h3>
+            <h3>{satisfaction}%</h3>
             <p>Satisfaction Rate</p>
           </div>
         </div>
       </section>
 
       <section className="features">
-        <h2>Why Choose CryptoShark?</h2>
+        <h2>Why Choose VaultX?</h2>
         <p className="section-sub">We make crypto investing simple, safe, and rewarding.</p>
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon"><BiLock/></div>
+        <div ref={featuresRef} className="features-grid">
+          <div className={`feature-card fade-left ${featuresVisible ? 'visible' : ''}`}>
+            <div className="feature-icon"><BiLock /></div>
             <h3>Bank-Grade Security</h3>
             <p>Your assets are protected with military-grade encryption and multi-factor authentication.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon"><BiTrendingUp/></div>
+          <div className={`feature-card fade-up delay-2 ${featuresVisible ? 'visible' : ''}`}>
+            <div className="feature-icon"><BiTrendingUp /></div>
             <h3>Consistent Returns</h3>
             <p>Our expert-managed plans deliver steady returns regardless of market conditions.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon"><FontAwesomeIcon icon={faBolt}/></div>
+          <div className={`feature-card fade-right delay-3 ${featuresVisible ? 'visible' : ''}`}>
+            <div className="feature-icon"><FontAwesomeIcon icon={faBolt} /></div>
             <h3>Instant Withdrawals</h3>
             <p>Access your funds anytime. No delays, no hidden fees, no stress.</p>
           </div>
@@ -58,20 +70,20 @@ const Home = () => {
       <section className="how-it-works">
         <h2>How It Works</h2>
         <p className="section-sub">Start investing in three simple steps.</p>
-        <div className="steps">
-          <div className="step">
+        <div ref={stepsRef} className="steps">
+          <div className={`step fade-left ${stepsVisible ? 'visible' : ''}`}>
             <div className="step-number">1</div>
             <h3>Create Account</h3>
             <p>Sign up in minutes with just your email and basic details.</p>
           </div>
           <div className="step-divider"></div>
-          <div className="step">
+          <div className={`step fade-up delay-2 ${stepsVisible ? 'visible' : ''}`}>
             <div className="step-number">2</div>
             <h3>Choose a Plan</h3>
             <p>Pick an investment plan that matches your goals and budget.</p>
           </div>
           <div className="step-divider"></div>
-          <div className="step">
+          <div className={`step fade-right delay-3 ${stepsVisible ? 'visible' : ''}`}>
             <div className="step-number">3</div>
             <h3>Watch It Grow</h3>
             <p>Track your returns in real time from your personal dashboard.</p>
@@ -80,9 +92,11 @@ const Home = () => {
       </section>
 
       <section className="cta-banner">
-        <h2>Ready to Start Investing?</h2>
-        <p>Join thousands of investors already growing their wealth with VaultX.</p>
-        <a href="/signup" className="btn-primary">Create Free Account</a>
+        <div ref={ctaRef} className={`fade-up ${ctaVisible ? 'visible' : ''}`}>
+          <h2>Ready to Start Investing?</h2>
+          <p>Join thousands of investors already growing their wealth with VaultX.</p>
+          <a href="/signup" className="btn-primary">Create Free Account</a>
+        </div>
       </section>
 
     </div>

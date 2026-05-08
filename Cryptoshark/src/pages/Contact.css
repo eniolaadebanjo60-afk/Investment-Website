@@ -37,6 +37,7 @@
   background-color: var(--color-primary-light);
   border-radius: 12px;
   padding: 24px;
+  text-align: center;
 }
 
 .info-icon {
@@ -70,7 +71,7 @@
 .form textarea {
   width: 100%;
   padding: 14px 16px;
-  border: 1px solid var(--color-primary-light);
+  border: 1px solid #000;
   border-radius: 8px;
   font-size: 15px;
   margin-bottom: 16px;
@@ -140,4 +141,103 @@
 
 .social-icon a:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 60px 5%;
+  }
+
+  .contact-hero h1 {
+    font-size: 36px;
+  }
+
+  .contact-hero p {
+    font-size: 16px;
+  }
+
+  .contact-body {
+    flex-direction: column;
+    gap: 32px;
+    padding: 60px 5%;
+  }
+
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .form h2 {
+    font-size: 24px;
+  }
+
+  .extra-contact {
+    padding: 36px 5%;
+  }
+
+  .social-icon {
+    gap: 16px;
+  }
+
+  .social-icon a {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero {
+    padding: 50px 4%;
+  }
+
+  .contact-hero h1 {
+    font-size: 28px;
+  }
+
+  .contact-hero p {
+    font-size: 15px;
+  }
+
+  .contact-body {
+    padding: 50px 4%;
+    gap: 24px;
+  }
+
+  .info-card {
+    padding: 20px 16px;
+  }
+
+  .form h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .form input,
+  .form textarea {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .form button {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .success-message {
+    padding: 36px 20px;
+  }
+
+  .success-message h3 {
+    font-size: 20px;
+  }
+
+  .extra-contact {
+    padding: 28px 4%;
+  }
+
+  .social-icon a {
+    font-size: 24px;
+  }
 }

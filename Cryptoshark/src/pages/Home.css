@@ -237,3 +237,91 @@
 .cta-banner .btn-primary:hover {
   background-color: var(--color-primary-light);
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 5%;
+    min-height: 60vh;
+    gap: 32px;
+  }
+
+  .hero-text {
+    margin-top: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+    max-width: 100%;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-stats {
+    gap: 24px;
+  }
+
+  .stat h3 {
+    font-size: 22px;
+  }
+
+  .features {
+    padding: 60px 5%;
+  }
+
+  .features h2 {
+    font-size: 28px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .how-it-works {
+    padding: 60px 5%;
+  }
+
+  .how-it-works h2 {
+    font-size: 28px;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .step {
+    width: 100%;
+  }
+
+  .step-divider {
+    width: 2px;
+    height: 40px;
+  }
+
+  .cta-banner {
+    padding: 60px 5%;
+  }
+
+  .cta-banner h2 {
+    font-size: 26px;
+  }
+
+  .cta-banner p {
+    font-size: 14px;
+  }
+}

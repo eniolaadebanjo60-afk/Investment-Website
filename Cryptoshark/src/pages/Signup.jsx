@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Signup.css'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const Signup = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' })
   const [error, setError] = useState('')
   const navigate = useNavigate()
+
+  const [cardRef, cardVisible] = useScrollAnimation()
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -46,7 +49,7 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <div className="signup-card">
+      <div ref={cardRef} className={`signup-card fade-up ${cardVisible ? 'visible' : ''}`}>
         <div className="signup-logo">Vault<span>X</span></div>
         <h2>Create Account</h2>
         <p>Start growing your wealth today</p>

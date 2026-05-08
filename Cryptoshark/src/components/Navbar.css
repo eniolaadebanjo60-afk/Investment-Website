@@ -8,6 +8,7 @@
   top: 0;
   z-index: 100;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .navbar-logo a{
@@ -79,3 +80,93 @@
 .btn-signup:hover {
   background-color: #084d30;
 }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text);
+  border-radius: 3px;
+  transition: all 0.3s;
+  display: block;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-primary-light);
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  padding: 16px 5%;
+  gap: 16px;
+  z-index: 99;
+  animation: dropDown 0.3s ease forwards;
+}
+
+@keyframes dropDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--color-gray);
+  font-size: 16px;
+  font-weight: 500;
+  transition: ease 0.3s;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  color: var(--color-primary);
+}
+
+.mobile-signup {
+  background-color: var(--color-primary);
+  color: var(--color-white) !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600 !important;
+}
+
+.mobile-signup:hover {
+  background-color: #084d30;
+}
+
+@media (max-width: 768px) {
+  .navbar-links,
+  .navbar-actions {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    text-align: center;
+  }
+  .navbar {
+    padding: 16px 5%;
+    flex-wrap: wrap;
+  }
+
+  .navbar-logo {
+    font-size: 22px;
+  }
+}
+
