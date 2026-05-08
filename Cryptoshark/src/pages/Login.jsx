@@ -2,11 +2,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Login.css'
 import useScrollAnimation from '../hooks/useScrollAnimation'
+import { BiShow, BiHide } from 'react-icons/bi'
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false)
 
   const [cardRef, cardVisible] = useScrollAnimation()
 
@@ -27,6 +29,10 @@ const Login = () => {
     navigate('/dashboard')
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') handleLogin()
+  }
+
   return (
     <div className="login">
       <div ref={cardRef} className={`login-card fade-up ${cardVisible ? 'visible' : ''}`}>
@@ -42,14 +48,21 @@ const Login = () => {
           placeholder="Email Address"
           value={form.email}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-        />
+        <div className='input-wrapper'>
+            <input
+             type="password"
+             name="password"
+             placeholder="Password"
+             value={form.password}
+             onChange={handleChange}
+             onKeyDown={handleKeyDown}
+            />
+            <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
+             {showPassword ? <BiHide/> : <BiShow/>}
+            </span>
+        </div>
 
         <button onClick={handleLogin}>Login</button>
 

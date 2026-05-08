@@ -97,6 +97,25 @@
 .login-footer a:hover {
   text-decoration: underline;
 }
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
 
 @media (max-width: 480px) {
   .login-card {

@@ -127,19 +127,24 @@ const Dashboard = () => {
 
   if (!user) return null
 
+  const hasInvestments = user.investments && user.investments.filter(inv => typeof inv === 'object').length > 0
+
   return (
     <div className="dashboard">
 
+      {/* Top Bar */}
       <div className="dash-topbar">
         <div className="dash-logo">Vault<span>X</span></div>
         <div className="dash-user">
           <span>👋 Welcome, {user.name}</span>
+          <button className="profile-btn" onClick={() => navigate('/profile')}>Profile</button>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
 
       <div className="dash-body">
 
+        {/* Balance Cards */}
         <div className="dash-balance">
           <div className="balance-card">
             <p>Total Balance</p>
@@ -152,7 +157,7 @@ const Dashboard = () => {
           </div>
           <div className="balance-card secondary">
             <p>Total Investments</p>
-            <h1>{user.investments?.length || 0}</h1>
+            <h1>{user.investments?.filter(inv => typeof inv === 'object').length || 0}</h1>
             <span>Active plans</span>
           </div>
           <div className="balance-card secondary">
@@ -162,6 +167,64 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* Empty State */}
+        {user.balance === 0 && !hasInvestments && (
+          <div className="empty-state">
+            <div className="empty-icon">🚀</div>
+            <h2>Welcome to VaultX, {user.name.split(' ')[0]}!</h2>
+            <p>You're all set! Fund your account to start investing and growing your wealth.</p>
+            <button onClick={() => setShowFund(true)}>+ Fund Account Now</button>
+          </div>
+        )}
+
+        {/* Active Investments */}
+        {hasInvestments && (
+          <div className="dash-section">
+            <h2>Active Investments</h2>
+            <div className="active-investments">
+              {user.investments
+                .filter(inv => typeof inv === 'object')
+                .map((inv, i) => {
+                  const daysRemaining = inv.duration - inv.daysProcessed
+                  const progress = Math.min((inv.daysProcessed / inv.duration) * 100, 100)
+                  return (
+                    <div className="active-inv-card" key={i}>
+                      <div className="active-inv-header">
+                        <h3>{inv.plan} Plan</h3>
+                        <span className={daysRemaining <= 0 ? 'badge-done' : 'badge-active'}>
+                          {daysRemaining <= 0 ? 'Completed' : 'Active'}
+                        </span>
+                      </div>
+                      <div className="active-inv-details">
+                        <div>
+                          <p>Invested</p>
+                          <strong>${inv.amount.toLocaleString()}</strong>
+                        </div>
+                        <div>
+                          <p>Daily Return</p>
+                          <strong>{inv.daily}%</strong>
+                        </div>
+                        <div>
+                          <p>Duration</p>
+                          <strong>{inv.duration} Days</strong>
+                        </div>
+                        <div>
+                          <p>Days Left</p>
+                          <strong>{daysRemaining <= 0 ? 'Done' : `${daysRemaining} Days`}</strong>
+                        </div>
+                      </div>
+                      <div className="progress-bar">
+                        <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+                      </div>
+                      <p className="progress-label">{Math.floor(progress)}% Complete</p>
+                    </div>
+                  )
+                })}
+            </div>
+          </div>
+        )}
+
+        {/* Investment Plans */}
         <div className="dash-section">
           <h2>Investment Plans</h2>
           <div className="dash-plans">
@@ -177,6 +240,7 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* Transaction History */}
         <div className="dash-section">
           <h2>Transaction History</h2>
           {transactions.length === 0 ? (
@@ -207,37 +271,39 @@ const Dashboard = () => {
           )}
         </div>
 
+        {/* Withdrawal Requests */}
         <div className="dash-section">
-            <h2>Withdrawal Requests</h2>
-            {JSON.parse(localStorage.getItem('vaultx_withdrawals') || '[]')
-                 .filter(r => r.email === user.email).length === 0 ? (
-                <p className="no-tx">No withdrawal requests yet.</p>
-            ) : (
-              <table className="tx-table">
-                <thead>
-                    <tr>
-                      <th>Amount</th>
-                      <th>Date</th>
-                      <th>Status</th>
+          <h2>Withdrawal Requests</h2>
+          {JSON.parse(localStorage.getItem('vaultx_withdrawals') || '[]')
+            .filter(r => r.email === user.email).length === 0 ? (
+            <p className="no-tx">No withdrawal requests yet.</p>
+          ) : (
+            <table className="tx-table">
+              <thead>
+                <tr>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {JSON.parse(localStorage.getItem('vaultx_withdrawals') || '[]')
+                  .filter(r => r.email === user.email)
+                  .map((r, i) => (
+                    <tr key={i}>
+                      <td>${r.amount.toLocaleString()}</td>
+                      <td>{r.date}</td>
+                      <td className="status-pending">{r.status}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    {JSON.parse(localStorage.getItem('vaultx_withdrawals') || '[]')
-                        .filter(r => r.email === user.email)
-                        .map((r, i) => (
-                        <tr key={i}>
-                            <td>${r.amount.toLocaleString()}</td>
-                            <td>{r.date}</td>
-                            <td className="status-pending">{r.status}</td>
-                        </tr>
-                    ))}
-                </tbody>
+                  ))}
+              </tbody>
             </table>
-        )}
-    </div>
+          )}
+        </div>
 
       </div>
 
+      {/* Fund Modal */}
       {showFund && (
         <div className="modal-overlay">
           <div className="modal">
@@ -274,6 +340,7 @@ const Dashboard = () => {
         </div>
       )}
 
+      {/* Withdraw Modal */}
       {showWithdraw && (
         <div className="modal-overlay">
           <div className="modal">
@@ -287,8 +354,7 @@ const Dashboard = () => {
             />
             <div className="modal-buttons">
               <button className="modal-cancel" onClick={() => setShowWithdraw(false)}>Cancel</button>
-              <button className="modal-confirm" 
-              onClick={() => {
+              <button className="modal-confirm" onClick={() => {
                 if (!withdrawAmount || withdrawAmount <= 0) return
                 if (parseFloat(withdrawAmount) > user.balance) {
                   alert('Insufficient balance.')
@@ -305,14 +371,13 @@ const Dashboard = () => {
                 const requests = JSON.parse(localStorage.getItem('vaultx_withdrawals') || '[]')
                 requests.push(request)
                 localStorage.setItem('vaultx_withdrawals', JSON.stringify(requests))
-
                 const updatedUser = { ...user, balance: parseFloat((user.balance - amount).toFixed(2)) }
                 const tx = {
-                    type: 'Withdrawal',
-                    plan: '-',
-                    amount: amount,
-                    returns: '-',
-                    date: new Date().toLocaleDateString(),
+                  type: 'Withdrawal',
+                  plan: '-',
+                  amount: amount,
+                  returns: '-',
+                  date: new Date().toLocaleDateString(),
                 }
                 const updatedTx = [tx, ...transactions]
                 updateUserInStorage(updatedUser)
@@ -322,7 +387,7 @@ const Dashboard = () => {
                 setShowWithdraw(false)
                 setWithdrawAmount('')
                 alert('Your withdrawal request has been sent. Our team will process it within 24 hours.')
-            }}>Submit Request</button>
+              }}>Submit Request</button>
             </div>
           </div>
         </div>

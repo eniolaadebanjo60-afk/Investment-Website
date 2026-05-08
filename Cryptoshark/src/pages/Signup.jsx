@@ -2,11 +2,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Signup.css'
 import useScrollAnimation from '../hooks/useScrollAnimation'
+import { BiShow, BiHide } from 'react-icons/bi'
 
 const Signup = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' })
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false)
 
   const [cardRef, cardVisible] = useScrollAnimation()
 
@@ -14,6 +16,9 @@ const Signup = () => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const handleKeyDown = (e) => {
+  if (e.key === 'Enter') handleSignup()
+}
   const handleSignup = () => {
     if (!form.name || !form.email || !form.password || !form.confirm) {
       setError('Please fill in all fields.')
@@ -76,14 +81,22 @@ const Signup = () => {
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
-        <input
-          type="password"
-          name="confirm"
-          placeholder="Confirm Password"
-          value={form.confirm}
-          onChange={handleChange}
-        />
+
+        <div className='input-wrapper'>
+            <input
+              type="password"
+              name="confirm"
+              placeholder="Confirm Password"
+              value={form.confirm}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+            />
+            <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <BiHide/> : <BiShow/>}
+            </span>
+        </div>
 
         <button onClick={handleSignup}>Create Account</button>
 
