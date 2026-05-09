@@ -4,6 +4,50 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBolt } from '@fortawesome/free-solid-svg-icons'
 import useScrollAnimation from '../hooks/useScrollAnimation'
 import useCountUp from '../hooks/useCountUp'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
+
+const faqs = [
+  {
+    question: 'How do I get started with VaultX?',
+    answer: 'Simply create a free account, fund your balance and choose an investment plan that suits your goals. The whole process takes less than 5 minutes.',
+  },
+  {
+    question: 'Is my money safe with VaultX?',
+    answer: 'Yes. We use bank-grade encryption and multi-factor authentication to protect your assets. Our platform is monitored 24/7 by our security team.',
+  },
+  {
+    question: 'How are returns calculated?',
+    answer: 'Returns are calculated daily based on your chosen plan percentage. For example the Bronze plan earns 2% daily on your invested amount for 7 days.',
+  },
+  {
+    question: 'How long does withdrawal take?',
+    answer: 'Withdrawal requests are processed within 24 hours. Once approved the funds are sent directly to your registered wallet or bank account.',
+  },
+  {
+    question: 'Can I invest in multiple plans?',
+    answer: 'Yes! You can invest in as many plans as you want simultaneously as long as you have sufficient balance for each plan.',
+  },
+]
+
+
+const testimonials = [
+  {
+    name: 'James Okafor',
+    role: 'Small Business Owner',
+    text: 'I started with the Bronze plan and within a week I could already see returns. VaultX is the real deal — simple, transparent and reliable.',
+  },
+  {
+    name: 'Amara Diallo',
+    role: 'Freelance Designer',
+    text: 'I was skeptical at first but VaultX proved me wrong. The dashboard is easy to use and my Gold plan has been performing beyond expectations.',
+  },
+  {
+    name: 'David Chen',
+    role: 'Software Engineer',
+    text: 'As someone who understands tech, I appreciate how clean and secure VaultX feels. My Platinum investment has been growing steadily every day.',
+  },
+]
 
 const Home = () => {
   const [heroRef, heroVisible] = useScrollAnimation()
@@ -11,6 +55,9 @@ const Home = () => {
   const [stepsRef, stepsVisible] = useScrollAnimation()
   const [ctaRef, ctaVisible] = useScrollAnimation()
   const [statsRef, statsVisible] = useScrollAnimation()
+  const [testimonialsRef, testimonialsVisible] = useScrollAnimation()
+  const [openFaq, setOpenFaq] = useState(null)
+  const [faqRef, faqVisible] = useScrollAnimation()
 
   const assets = useCountUp(120, statsVisible)
   const investors = useCountUp(15000, statsVisible)
@@ -88,6 +135,53 @@ const Home = () => {
             <h3>Watch It Grow</h3>
             <p>Track your returns in real time from your personal dashboard.</p>
           </div>
+        </div>
+      </section>
+
+      <section className="faq">
+        <h2>Frequently Asked Questions</h2>
+        <p className="section-sub">Everything you need to know about VaultX.</p>
+        <div ref={faqRef} className="faq-list">
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className={`faq-item fade-up delay-${i + 1} ${faqVisible ? 'visible' : ''}`}
+            >
+              <div className="faq-question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                <h4>{faq.question}</h4>
+                <span>{openFaq === i ? '−' : '+'}</span>
+              </div>
+              {openFaq === i && (
+                <div className="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      <section className="testimonials">
+        <h2>What Our Investors Say</h2>
+        <p className="section-sub">Real people, real results.</p>
+        <div ref={testimonialsRef} className="testimonials-grid">
+          {testimonials.map((t, i) => (
+            <div key={i} className={`testimonial-card fade-up delay-${i + 1} ${testimonialsVisible ? 'visible' : ''}`}>
+              <p className="testimonial-text">"{t.text}"</p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar">{t.name.charAt(0)}</div>
+                <div>
+                  <h4>{t.name}</h4>
+                  <span>{t.role}</span>
+                </div>
+              </div>
+              <div className="testimonial-stars">
+                {Array.from({length: 5}). map((_, i) =>
+                <FontAwesomeIcon icon={faStar} key={1}/>)}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

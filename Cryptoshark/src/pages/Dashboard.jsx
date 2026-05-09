@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Dashboard.css'
+import Toast from '../components/Toast'
+import useToast from '../hooks/useToast'
 
 const plans = [
   { name: 'Bronze', min: 100, daily: 2, duration: 7 },
@@ -17,6 +19,8 @@ const Dashboard = () => {
   const [showWithdraw, setShowWithdraw] = useState(false)
   const [withdrawAmount, setWithdrawAmount] = useState('')
   const navigate = useNavigate()
+  const { toast, showToast, hideToast } = useToast()
+
 
   const updateUserInStorage = (updatedUser) => {
     localStorage.setItem('vaultx_auth', JSON.stringify(updatedUser))
@@ -83,7 +87,7 @@ const Dashboard = () => {
 
   const handleInvest = (plan) => {
     if (user.balance < plan.min) {
-      alert(`You need at least $${plan.min} to invest in the ${plan.name} plan.`)
+      showToast(`You need at least $${plan.min} to invest in the $${plan.name} plan.`, 'error')
       return
     }
 
@@ -119,7 +123,7 @@ const Dashboard = () => {
 
   const handleWithdraw = () => {
     if (user.balance <= 0) {
-      alert('You have no balance to withdraw.')
+      showToast('You have no balance to withdraw.', 'error')
       return
     }
     setShowWithdraw(true)
@@ -132,7 +136,6 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
 
-      {/* Top Bar */}
       <div className="dash-topbar">
         <div className="dash-logo">Vault<span>X</span></div>
         <div className="dash-user">
@@ -143,8 +146,6 @@ const Dashboard = () => {
       </div>
 
       <div className="dash-body">
-
-        {/* Balance Cards */}
         <div className="dash-balance">
           <div className="balance-card">
             <p>Total Balance</p>
@@ -167,7 +168,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Empty State */}
         {user.balance === 0 && !hasInvestments && (
           <div className="empty-state">
             <div className="empty-icon">🚀</div>
@@ -177,7 +177,6 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Active Investments */}
         {hasInvestments && (
           <div className="dash-section">
             <h2>Active Investments</h2>
@@ -224,7 +223,6 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Investment Plans */}
         <div className="dash-section">
           <h2>Investment Plans</h2>
           <div className="dash-plans">
@@ -240,7 +238,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Transaction History */}
         <div className="dash-section">
           <h2>Transaction History</h2>
           {transactions.length === 0 ? (
@@ -271,7 +268,6 @@ const Dashboard = () => {
           )}
         </div>
 
-        {/* Withdrawal Requests */}
         <div className="dash-section">
           <h2>Withdrawal Requests</h2>
           {JSON.parse(localStorage.getItem('vaultx_withdrawals') || '[]')
@@ -303,7 +299,6 @@ const Dashboard = () => {
 
       </div>
 
-      {/* Fund Modal */}
       {showFund && (
         <div className="modal-overlay">
           <div className="modal">
@@ -340,7 +335,6 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Withdraw Modal */}
       {showWithdraw && (
         <div className="modal-overlay">
           <div className="modal">
@@ -357,7 +351,7 @@ const Dashboard = () => {
               <button className="modal-confirm" onClick={() => {
                 if (!withdrawAmount || withdrawAmount <= 0) return
                 if (parseFloat(withdrawAmount) > user.balance) {
-                  alert('Insufficient balance.')
+                  showToast('Insufficient balance.', 'error')
                   return
                 }
                 const amount = parseFloat(withdrawAmount)
@@ -386,12 +380,13 @@ const Dashboard = () => {
                 setTransactions(updatedTx)
                 setShowWithdraw(false)
                 setWithdrawAmount('')
-                alert('Your withdrawal request has been sent. Our team will process it within 24 hours.')
+                showToast('Withdrawal request sent. Our team will process it within 24 hours.', 'info')
               }}>Submit Request</button>
             </div>
           </div>
         </div>
       )}
+      {toast && <Toast message={toast.message} type={toast.type} onClose={hideToast} />}
 
     </div>
   )

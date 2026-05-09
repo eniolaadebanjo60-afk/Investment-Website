@@ -4,15 +4,17 @@ import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BiLogoWhatsapp, BiLogoFacebook, BiLogoInstagram, BiLogoTwitter, BiLogoTelegram } from 'react-icons/bi'
 import useScrollAnimation from '../hooks/useScrollAnimation'
+import Toast from '../components/Toast'
+import useToast from '../hooks/useToast'
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
 
   const [heroRef, heroVisible] = useScrollAnimation()
   const [infoRef, infoVisible] = useScrollAnimation()
   const [formRef, formVisible] = useScrollAnimation()
   const [socialRef, socialVisible] = useScrollAnimation()
+  const { toast, showToast, hideToast } = useToast()
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -23,7 +25,7 @@ const Contact = () => {
     const contacts = JSON.parse(localStorage.getItem('vaultx_contacts') || '[]')
     contacts.push({ ...form, date: new Date().toISOString() })
     localStorage.setItem('vaultx_contacts', JSON.stringify(contacts))
-    setSubmitted(true)
+    showToast('Message sent! We will get back to you within 24 hours.', 'success')
     setForm({ name: '', email: '', subject: '', message: '' })
   }
 
@@ -112,8 +114,11 @@ const Contact = () => {
         </div>
       </div>
 
+      {toast && <Toast message={toast.message} type={toast.type} onClose={hideToast} />}    
     </div>
   )
 }
+
+
 
 export default Contact
