@@ -52,7 +52,7 @@ const Login = () => {
         />
         <div className='input-wrapper'>
             <input
-             type="password"
+             type={showPassword ? 'text' : 'password'}
              name="password"
              placeholder="Password"
              value={form.password}

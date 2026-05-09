@@ -12,7 +12,6 @@ import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import Admin from './pages/Admin'
 import Profile from './pages/Profile'
-import PageTransition from './components/PageTransition'
 import Spinner from './components/Spinner'
 
 const Layout = ({ children }) => {
@@ -23,11 +22,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {!hideBars && <Navbar />}
-      <AnimatePresence mode="wait">
-        <PageTransition key={location.pathname}>
-          {children}
-        </PageTransition>
-      </AnimatePresence>
+       {children}
       {!hideBars && <Footer />}
     </>
   )
