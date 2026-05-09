@@ -60,47 +60,39 @@ const Contact = () => {
         </div>
 
         <div ref={formRef} className={`contact-form fade-right ${formVisible ? 'visible' : ''}`}>
-          {submitted ? (
-            <div className="success-message">
-              <h3>Message Sent!</h3>
-              <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-            </div>
-          ) : (
-            <div className="form">
-              <h2>Send a Message</h2>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={handleChange}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={form.email}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={form.subject}
-                onChange={handleChange}
-              />
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows="5"
-                value={form.message}
-                onChange={handleChange}
-              />
-              <button onClick={handleSubmit}>Send Message</button>
-            </div>
-          )}
+          <div className="form">
+            <h2>Send a Message</h2>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={form.name}
+              onChange={handleChange}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              value={form.subject}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              value={form.message}
+              onChange={handleChange}
+            />
+            <button onClick={handleSubmit}>Send Message</button>
+          </div>
         </div>
-
       </section>
 
       <div ref={socialRef} className={`extra-contact fade-up ${socialVisible ? 'visible' : ''}`}>

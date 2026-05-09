@@ -178,7 +178,7 @@ const Home = () => {
               </div>
               <div className="testimonial-stars">
                 {Array.from({length: 5}). map((_, i) =>
-                <FontAwesomeIcon icon={faStar} key={1}/>)}
+                <FontAwesomeIcon icon={faStar} key={i}/>)}
               </div>
             </div>
           ))}
