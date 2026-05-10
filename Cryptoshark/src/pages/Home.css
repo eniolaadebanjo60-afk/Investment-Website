@@ -345,12 +345,8 @@
   align-items: center;
   padding: 20px 24px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.faq-question:hover {
-  background-color: var(--color-primary-light);
-}
 
 .faq-question h4 {
   font-size: 15px;
@@ -387,7 +383,6 @@
   .faq {
     padding: 60px 5%;
   }
-
   .faq h2 {
     font-size: 28px;
   }

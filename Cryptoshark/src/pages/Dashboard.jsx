@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import './Dashboard.css'
 import Toast from '../components/Toast'
 import useToast from '../hooks/useToast'
+import { BsRocketTakeoff } from 'react-icons/bs'
+
 
 const plans = [
   { name: 'Bronze', min: 100, daily: 2, duration: 7 },
@@ -170,7 +172,7 @@ const Dashboard = () => {
 
         {user.balance === 0 && !hasInvestments && (
           <div className="empty-state">
-            <div className="empty-icon">🚀</div>
+            <div className="empty-icon"><BsRocketTakeoff/></div>
             <h2>Welcome to VaultX, {user.name.split(' ')[0]}!</h2>
             <p>You're all set! Fund your account to start investing and growing your wealth.</p>
             <button onClick={() => setShowFund(true)}>+ Fund Account Now</button>

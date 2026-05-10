@@ -3,7 +3,6 @@
   background-color: #f9fafb;
 }
 
-/* Top Bar */
 .dash-topbar {
   background-color: var(--color-white);
   border-bottom: 1px solid var(--color-primary-light);
@@ -433,7 +432,6 @@
   text-align: right;
 }
 
-/* Empty State */
 .empty-state {
   background-color: var(--color-white);
   border: 1px solid var(--color-primary-light);
@@ -480,12 +478,17 @@
     padding: 14px 4%;
     box-sizing: border-box;
   }
-
+  .dash-user{
+    gap: 8px;
+  }
   .dash-user span {
     font-size: 12px;
     color: #000;
   }
-
+  .dash-user button{
+    font-size: 10px;
+    padding: 4px 8px;
+  }
   .dash-body {
     padding: 80px 4% 60px;
     gap: 32px;
@@ -515,7 +518,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
-
+  .dash-section{
+    text-align: center;
+  }
   .dash-section h2 {
     font-size: 20px;
   }

@@ -9,6 +9,7 @@ const Signup = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const [cardRef, cardVisible] = useScrollAnimation()
 
@@ -17,8 +18,9 @@ const Signup = () => {
   }
 
   const handleKeyDown = (e) => {
-  if (e.key === 'Enter') handleSignup()
-}
+    if (e.key === 'Enter') handleSignup()
+  }
+
   const handleSignup = () => {
     if (!form.name || !form.email || !form.password || !form.confirm) {
       setError('Please fill in all fields.')
@@ -75,27 +77,33 @@ const Signup = () => {
           value={form.email}
           onChange={handleChange}
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
 
-        <div className='input-wrapper'>
-            <input
-              type="password"
-              name="confirm"
-              placeholder="Confirm Password"
-              value={form.confirm}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-            />
-            <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <BiHide/> : <BiShow/>}
-            </span>
+        <div className="input-wrapper">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <BiShow /> : <BiHide />}
+          </span>
+        </div>
+
+        <div className="input-wrapper">
+          <input
+            type={showConfirm ? 'text' : 'password'}
+            name="confirm"
+            placeholder="Confirm Password"
+            value={form.confirm}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <span className="toggle-eye" onClick={() => setShowConfirm(!showConfirm)}>
+            {showConfirm ? <BiShow /> : <BiHide />}
+          </span>
         </div>
 
         <button onClick={handleSignup}>Create Account</button>

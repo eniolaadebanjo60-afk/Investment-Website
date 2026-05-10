@@ -60,7 +60,7 @@ const Login = () => {
              onKeyDown={handleKeyDown}
             />
             <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
-             {showPassword ? <BiHide/> : <BiShow/>}
+             {showPassword ? <BiShow/> : <BiHide/>}
             </span>
         </div>
 

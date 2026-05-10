@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Profile.css'
+import { BiShow, BiHide } from 'react-icons/bi'
 
 const Profile = () => {
   const [user, setUser] = useState(null)
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' })
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
   const navigate = useNavigate()
 
-    
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem('vaultx_auth') || 'null')
     if (!auth) {
@@ -55,9 +57,6 @@ const Profile = () => {
     setForm({ ...form, password: '', confirm: '' })
   }
 
-  const hideBars = location.pathname === '/dashboard' || 
-                 location.pathname === '/admin' || 
-                 location.pathname === '/profile'
   if (!user) return null
 
   return (
@@ -102,22 +101,32 @@ const Profile = () => {
           />
 
           <label>New Password <span>(leave blank to keep current)</span></label>
-          <input
-            type="password"
-            name="password"
-            placeholder="New password"
-            value={form.password}
-            onChange={handleChange}
-          />
+          <div className="input-wrapper">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="New password"
+              value={form.password}
+              onChange={handleChange}
+            />
+            <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <BiShow /> : <BiHide />}
+            </span>
+          </div>
 
           <label>Confirm New Password</label>
-          <input
-            type="password"
-            name="confirm"
-            placeholder="Confirm new password"
-            value={form.confirm}
-            onChange={handleChange}
-          />
+          <div className="input-wrapper">
+            <input
+              type={showConfirm ? 'text' : 'password'}
+              name="confirm"
+              placeholder="Confirm new password"
+              value={form.confirm}
+              onChange={handleChange}
+            />
+            <span className="toggle-eye" onClick={() => setShowConfirm(!showConfirm)}>
+              {showConfirm ? <BiShow /> : <BiHide />}
+            </span>
+          </div>
 
           <button onClick={handleUpdate}>Save Changes</button>
         </div>
